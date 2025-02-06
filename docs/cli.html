@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command-Line &mdash; nebula v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=76e2d817"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pytest" href="pytest.html" />
+    <link rel="prev" title="Managers" href="flow.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="index.html" class="icon icon-home">
+            nebula
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flow.html">Managers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command-Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#top-level">Top-Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manager">MANAGER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uart">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network">NETWORK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloader">DOWNLOADER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pdu">PDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jtag">JTAG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#info">INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#driver">DRIVER</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pytest.html">pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yml.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw_devs.html">Hardware Specific Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests/index.html">Built-In Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/nebula.html">nebula package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">nebula</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Command-Line</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cli.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="command-line">
+<h1>Command-Line<a class="headerlink" href="#command-line" title="Link to this heading"></a></h1>
+<p>Invoke style tasks for Nebula’s CLI.</p>
+<section id="top-level">
+<h2>Top-Level<a class="headerlink" href="#top-level" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Subcommands:
+
+  gen-config                          Generate YAML configuration interactively
+  show-log                            Show log for all following tasks
+  update-config                       Update or read field of existing yaml
+                                      config file
+  build.repo                          Clone and build git project
+  coverage.kernel                     Collect DUT gcov kernel logs and generate
+                                      html report (Requires lcov to be
+                                      installed locally)
+  dl.bootfiles                        Download bootfiles for a specific
+                                      development system
+  dl.sdcard                           Download, verify, and decompress SD card
+                                      image
+  driver.check-iio-devices            Verify all IIO drivers appear on system
+                                      as expected.
+  info.supported-boards               Print out list of supported design names
+  jtag.reboot                         Reboot board using JTAG
+  manager.update-boot-files           Update boot files through u-boot menu
+                                      (Assuming board is running)
+  manager.update-boot-files-jtag      Update boot files through JTAG
+                                      (Assuming board is running)
+  manager.recovery-device-manager     Recover device through many methods
+                                      (Assuming board is running)
+  net.check-dmesg                     Download and parse remote board&#39;s dmesg
+                                      log
+  net.restart-board                   Reboot development system over IP
+  net.update-boot-files               Update boot files on SD Card over SSH
+  pdu.power-cycle                     Reboot board with PDU
+  uart.get-carriername                Get Carrier (FPGA) name of DUT from UART
+                                      connection
+  uart.get-ip                         Get IP of DUT from UART connection
+  uart.get-mezzanine                  Get Mezzanine (FMC) name of DUT from UART
+                                      connection
+  uart.restart-board                  Reboot DUT from UART connection assuming
+                                      Linux is accessible
+  uart.set-dhcp                       Set board to use DHCP for networking from
+                                      UART connection
+  uart.set-local-nic-ip-from-usbdev   Set IP of virtual NIC created from DUT
+                                      based on found MAC
+  uart.set-static-ip                  Set Static IP address of board of DUT
+                                      from UART connection
+  uart.update-boot-files              Update boot files through u-boot menu
+                                      (Assuming board is running)
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] gen-config [other tasks here ...]
+
+Docstring:
+  Generate YAML configuration interactively
+
+Options:
+  none
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] show-log [--options] [other tasks here ...]
+
+Docstring:
+  Show log for all following tasks
+
+Options:
+  -l STRING, --level=STRING   Set log level. Default is DEBUG
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] update-config [--options] [other tasks here ...]
+
+Docstring:
+  Update or read field of existing yaml config file
+
+Options:
+  -b STRING, --board-name=STRING
+  -f STRING, --field=STRING          Field of section of yaml to update
+  -s STRING, --section=STRING        Section of yaml to update
+  -v STRING, --value=STRING          New field value. If none if given field is
+                                     only printed
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     OS_SPECIFIC
+</pre></div>
+</div>
+</section>
+<section id="manager">
+<h2>MANAGER<a class="headerlink" href="#manager" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] manager.update-boot-files [--options] [other tasks here ...]
+
+Docstring:
+  Update boot files through u-boot menu (Assuming board is running)
+
+Options:
+  -b STRING, --bootbinpath=STRING           Path to BOOT.BIN.
+  -d STRING, --devtreepath=STRING           Path to devicetree.
+  -f STRING, --folder=STRING                Resource folder containing
+                                            BOOT.BIN, kernel, device tree, and
+                                            system_top.bit. Overrides other
+                                            setting
+  -o STRING, --board-name=STRING
+  -s STRING, --system-top-bit-path=STRING
+  -u STRING, --uimagepath=STRING            Path to kernel image.
+  -y STRING, --yamlfilename=STRING          Path to yaml config file. Default:
+                                            /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] manager.update-boot-files-jtag [--options] [other tasks here ...]
+
+Docstring:
+  Update boot files through JTAG (Assuming board is running)
+
+Options:
+  -b STRING, --bootbinpath=STRING           Path to BOOT.BIN.
+  -d STRING, --devtreepath=STRING           Path to devicetree.
+  -f STRING, --folder=STRING                Resource folder containing BOOT.BIN, kernel, device tree, and system_top.bit. Overrides other setting
+  -o STRING, --board-name=STRING            Name of DUT design (Ex: zynq-zc706-adv7511-fmcdaq2). Require for multi-device config files
+  -s STRING, --system-top-bit-path=STRING   Path to system_top.bit
+  -u STRING, --uimagepath=STRING            Path to kernel image.
+  -y STRING, --yamlfilename=STRING          Path to yaml config file. Default: /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] manager.recovery-device-manager [--options] [other tasks here ...]
+
+Docstring:
+  Recover device through many methods (Assuming board is running)
+
+Options:
+  -b STRING, --bootbinpath=STRING           Path to BOOT.BIN.
+  -c         --sdcard                       No arguments required. If set, reference files is obtained from SD card.
+  -d STRING, --devtreepath=STRING           Path to devicetree.
+  -f STRING, --folder=STRING                Resource folder containing BOOT.BIN, kernel, device tree, and system_top.bit. Overrides other setting
+  -o STRING, --board-name=STRING
+  -s STRING, --system-top-bit-path=STRING   Path to system_top.bit
+  -u STRING, --uimagepath=STRING            Path to kernel image.
+  -y STRING, --yamlfilename=STRING          Path to yaml config file. Default: /etc/default/nebula
+</pre></div>
+</div>
+</section>
+<section id="uart">
+<h2>UART<a class="headerlink" href="#uart" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.get-carriername [--options] [other tasks here ...]
+
+Docstring:
+  Get Carrier (FPGA) name of DUT from UART connection
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist, it will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.get-ip [--options] [other tasks here ...]
+
+Docstring:
+  Get IP of DUT from UART connection
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist is will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.get-mezzanine [--options] [other tasks here ...]
+
+Docstring:
+  Get Mezzanine (FMC) name of DUT from UART connection
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist, it will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.restart-board [--options] [other tasks here ...]
+
+Docstring:
+  Reboot DUT from UART connection assuming Linux is accessible
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist is will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.set-dhcp [--options] [other tasks here ...]
+
+Docstring:
+  Set board to use DHCP for networking from UART connection
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist is will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -n STRING, --nic=STRING            Network interface name to set. Default is
+                                     eth0
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.set-local-nic-ip-from-usbdev [--options] [other tasks here ...]
+
+Docstring:
+  Set IP of virtual NIC created from DUT based on found MAC
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist it will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.set-static-ip [--options] [other tasks here ...]
+
+Docstring:
+  Set Static IP address of board of DUT from UART connection
+
+Options:
+  -a STRING, --address=STRING        UART device address (/dev/ttyACMO). If a
+                                     yaml config exist it will override, if no
+                                     yaml file exists and no address provided
+                                     auto is used
+  -b STRING, --board-name=STRING
+  -i STRING, --ip=STRING             IP Address to set NIC to
+  -n STRING, --nic=STRING            Network interface name to set. Default is
+                                     eth0
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] uart.update-boot-files [--options] [other tasks here ...]
+
+Docstring:
+  Update boot files through u-boot menu (Assuming board is running)
+
+Options:
+  -a STRING, --address=STRING                   UART device address
+                                                (/dev/ttyACMO). If a yaml
+                                                config exist is will override,
+                                                if no yaml file exists and no
+                                                address provided auto is used
+  -b STRING, --board-name=STRING
+  -d STRING, --devtreepath=STRING               Path to devicetree.
+  -r, --reboot                                  Reboot board from linux console
+                                                to get to u-boot menu. Default
+                                                False
+  -s STRING, --system-top-bit-filename=STRING
+  -u STRING, --uimagepath=STRING                Path to kernel image.
+  -y STRING, --yamlfilename=STRING              Path to yaml config file.
+                                                Default: /etc/default/nebula
+</pre></div>
+</div>
+</section>
+<section id="network">
+<h2>NETWORK<a class="headerlink" href="#network" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] net.check-dmesg [--options] [other tasks here ...]
+
+Docstring:
+  Download and parse remote board&#39;s dmesg log
+  Three log files will be produced:
+      dmesg.log - Full dmesg
+      dmesg_err.log - dmesg errors only
+      dmesg_warn.log - dmesg warnings only
+
+Options:
+  -b STRING, --board-name=STRING
+  -i STRING, --ip=STRING           IP address of board
+  -p STRING, --password=STRING     Password for board. Default: analog
+  -u STRING, --user=STRING         Board username. Default: root
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] net.restart-board [--options] [other tasks here ...]
+
+Docstring:
+  Reboot development system over IP
+
+Options:
+  -b STRING, --board-name=STRING
+  -i STRING, --ip=STRING           IP address of board
+  -p STRING, --password=STRING     Password for board. Default: analog
+  -u STRING, --user=STRING         Board username. Default: root
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] net.update-boot-files [--options] [other tasks here ...]
+
+Docstring:
+  Update boot files on SD Card over SSH
+
+Options:
+  -b STRING, --bootbinpath=STRING   Path to BOOT.BIN. Optional
+  -d STRING, --devtreepath=STRING   Path to devicetree. Optional
+  -i STRING, --ip=STRING            IP address of board. Default from yaml
+  -m STRING, --uimagepath=STRING    Path to kernel image. Optional
+  -o STRING, --board-name=STRING
+  -p STRING, --password=STRING      Password for board. Default: analog
+  -u STRING, --user=STRING          Board username. Default: root
+</pre></div>
+</div>
+</section>
+<section id="downloader">
+<h2>DOWNLOADER<a class="headerlink" href="#downloader" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] dl.bootfiles [--options] [other tasks here ...]
+
+Docstring:
+  Download bootfiles for a specific development system
+
+Options:
+  -a STRING, --board-name=STRING
+  -b STRING, --branch=STRING         Name of branches to get related files. It can
+                                     be from Linux+HDL folders or from the
+                                     boot partition folder.
+                                     For Linx+HDL, enterstring [&lt;linuxbranch&gt;, &lt;hdlbranch&gt;].
+                                     For boot partition, enter [boot_partition, &lt;bootpartitionbranch&gt;].
+                                     This is only used for http and artifactory sources.
+                                     Default is [boot_partition, master]
+  -f, --firmware                     No arguments required. If set Pluto
+                                     firmware is downloaded from GitHub. Branch
+                                     name is used as release name. Design name
+                                     must be pluto or m2k
+  -o STRING, --source-root=STRING    Location of source boot files. Dependent on source.
+                                     For http and artifactory sources this is a IP or domain name (no http://)
+  -s STRING, --source=STRING         Boot file download source. Options are:
+                                     local_fs, http, artifactory, remote.
+                                     Default: local_fs
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] dl.sdcard [--options] [other tasks here ...]
+
+Docstring:
+  Download, verify, and decompress SD card image
+
+Options:
+  -r STRING, --release=STRING   Name of release to download. Default is 2019_R1
+</pre></div>
+</div>
+</section>
+<section id="pdu">
+<h2>PDU<a class="headerlink" href="#pdu" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] pdu.power-cycle [--options] [other tasks here ...]
+
+Docstring:
+  Reboot board with PDU
+
+Options:
+  -a STRING, --password=STRING       Password of PDU service (optional)
+  -b STRING, --board-name=STRING
+  -d STRING, --pduip=STRING          IP address of PDU (optional)
+  -o STRING, --outlet=STRING         Outlet index of which dev board is
+                                     connected
+  -p STRING, --pdutype=STRING        Type of PDU used. Current options:
+                                     cyberpower, vesync
+  -u STRING, --username=STRING       Username of PDU service (optional)
+  -y STRING, --yamlfilename=STRING   Path to yaml config file. Default:
+                                     /etc/default/nebula
+</pre></div>
+</div>
+</section>
+<section id="jtag">
+<h2>JTAG<a class="headerlink" href="#jtag" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] jtag.reboot [--options] [other tasks here ...]
+
+Docstring:
+  Reboot board using JTAG
+
+
+Options:
+  -b STRING, --board_name=STRING
+  -c STRING, --custom-vivado-path=STRING   Full path to vivado settings64 file.
+                                           When set ignores vivado version
+  -v STRING, --vivado-version=STRING       Set vivado version. Defaults to 2019.1
+  -y STRING, --yamlfilename=STRING         Path to yaml config file. Default:
+                                           /etc/default/nebula
+</pre></div>
+</div>
+</section>
+<section id="info">
+<h2>INFO<a class="headerlink" href="#info" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] info.supported-boards [--options] [other tasks here ...]
+
+Docstring:
+  Print out list of supported design names
+
+
+Options:
+  -f STRING, --filter=STRING   Required substring in design names
+</pre></div>
+</div>
+</section>
+<section id="driver">
+<h2>DRIVER<a class="headerlink" href="#driver" title="Link to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Usage: nebula [--core-opts] driver.check-iio-devices [--options] [other tasks here ...]
+
+Docstring:
+  Verify all IIO drivers appear on system as expected.
+  Exception is raised otherwise
+
+Options:
+  -b STRING, --board-name=STRING
+  -i STRING, --iio-device-names=STRING   List of IIO driver names to check on board
+  -u STRING, --uri=STRING                URI of board running iiod with drivers
+                                         to check
+  -y STRING, --yamlfilename=STRING       Path to yaml config file. Default:
+                                         /etc/default/nebula
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flow.html" class="btn btn-neutral float-left" title="Managers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pytest.html" class="btn btn-neutral float-right" title="pytest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Travis F. Collins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>

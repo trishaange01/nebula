@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kernel Coverage Testing &mdash; nebula v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=76e2d817"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nebula package" href="../core/nebula.html" />
+    <link rel="prev" title="Examples" href="../examples.html" />
+</head>
+
+<body class="wy-body-for-nav">
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+          <a href="../index.html" class="icon icon-home">
+            nebula
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../flow.html">Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Command-Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest.html">pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yml.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hw_devs.html">Hardware Specific Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/index.html">Built-In Tests</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kernel Coverage Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-kernel">Building the kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collecting-logs-and-generating-html-reports">Collecting logs and generating HTML reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/nebula.html">nebula package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nebula</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">Kernel Coverage Testing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/kernel_coverage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <section id="kernel-coverage-testing">
+<h1>Kernel Coverage Testing<a class="headerlink" href="#kernel-coverage-testing" title="Link to this heading"></a></h1>
+<p>This example will explain how gcov can be used to get coverage traces of specific drivers.</p>
+<section id="building-the-kernel">
+<h2>Building the kernel<a class="headerlink" href="#building-the-kernel" title="Link to this heading"></a></h2>
+<p>The kernel must be built with certain configurations and enabled and certain Makefiles updated so the specific driver is selected for coverage monitoring. For complete doc look at the <a class="reference external" href="https://www.kernel.org/doc/html/v4.14/dev-tools/gcov.html">kernel.org doc</a> .</p>
+<p>In short, configure the kernel with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG_DEBUG_FS</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_GCOV_KERNEL</span><span class="o">=</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>select the gcc’s gcov format, default is autodetect based on gcc version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG_GCOV_FORMAT_AUTODETECT</span><span class="o">=</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>To select specific drivers or folders update the necessary Makefiles as:</p>
+<ul>
+<li><p>For a single file (e.g. main.o):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GCOV_PROFILE_main</span><span class="o">.</span><span class="n">o</span> <span class="o">:=</span> <span class="n">y</span>
+</pre></div>
+</div>
+</li>
+<li><p>For all files in one directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GCOV_PROFILE</span> <span class="o">:=</span> <span class="n">y</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>To exclude files from being profiled even when CONFIG_GCOV_PROFILE_ALL
+is specified, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GCOV_PROFILE_main</span><span class="o">.</span><span class="n">o</span> <span class="o">:=</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GCOV_PROFILE</span> <span class="o">:=</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>Only files which are linked to the main kernel image or are compiled as
+kernel modules are supported by this mechanism.</p>
+</section>
+<section id="collecting-logs-and-generating-html-reports">
+<h2>Collecting logs and generating HTML reports<a class="headerlink" href="#collecting-logs-and-generating-html-reports" title="Link to this heading"></a></h2>
+<p>Once the remote kernel is booted and tests have been run. To collect the gcov traces and to generate the HTML report use the CLI API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nebula</span> <span class="n">coverage</span><span class="o">.</span><span class="n">kernel</span> <span class="o">--</span><span class="n">ip</span> <span class="o">&lt;</span><span class="n">ip</span> <span class="n">of</span> <span class="n">DUT</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">linux_build_dir</span> <span class="o">&lt;</span><span class="n">Build</span> <span class="n">directory</span> <span class="n">of</span> <span class="n">kernel</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This will create a directory called <strong>html</strong> with the generated html report.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the reports to be generated correctly the necessary compiler must be on path which was used to build the kernel and lcov must be installed.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../core/nebula.html" class="btn btn-neutral float-right" title="nebula package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Travis F. Collins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+</body>
+</html>
