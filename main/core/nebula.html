@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nebula package &mdash; nebula v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=0ec76b63"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nebula.builder module" href="nebula.builder.html" />
+    <link rel="prev" title="Kernel Coverage Testing" href="../examples/kernel_coverage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            nebula
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../flow.html">Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Command-Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest.html">pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yml.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hw_devs.html">Hardware Specific Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/index.html">Built-In Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nebula package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html">nebula.builder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.common.html">nebula.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.coverage.html">nebula.coverage module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.cyberpower.html">nebula.cyberpower module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html">nebula.downloader module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html">nebula.driver module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.errors.html">nebula.errors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html">nebula.helper module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html">nebula.jtag module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.main.html">nebula.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html">nebula.manager module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html">nebula.netbox module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html">nebula.netconsole module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html">nebula.network module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html">nebula.pdu module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tasks.html">nebula.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html">nebula.tftpboot module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html">nebula.uart module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html">nebula.usbdev module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html">usbmux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nebula">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nebula</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">nebula package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/core/nebula.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nebula-package">
+<h1>nebula package<a class="headerlink" href="#nebula-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nebula.builder.html">nebula.builder module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder"><code class="docutils literal notranslate"><span class="pre">builder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.add_vivado_path"><code class="docutils literal notranslate"><span class="pre">builder.add_vivado_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.analog_build_bootbin"><code class="docutils literal notranslate"><span class="pre">builder.analog_build_bootbin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.analog_clone"><code class="docutils literal notranslate"><span class="pre">builder.analog_clone()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.analog_clone_build"><code class="docutils literal notranslate"><span class="pre">builder.analog_clone_build()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_atf"><code class="docutils literal notranslate"><span class="pre">builder.build_atf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_bootbin"><code class="docutils literal notranslate"><span class="pre">builder.build_bootbin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_fsbl"><code class="docutils literal notranslate"><span class="pre">builder.build_fsbl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_pmufw"><code class="docutils literal notranslate"><span class="pre">builder.build_pmufw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_repo"><code class="docutils literal notranslate"><span class="pre">builder.build_repo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.build_zmp_fsbl"><code class="docutils literal notranslate"><span class="pre">builder.build_zmp_fsbl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.cmake_build"><code class="docutils literal notranslate"><span class="pre">builder.cmake_build()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.create_fsbl_project"><code class="docutils literal notranslate"><span class="pre">builder.create_fsbl_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.create_pmufw_project"><code class="docutils literal notranslate"><span class="pre">builder.create_pmufw_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.create_zmp_fsbl_project"><code class="docutils literal notranslate"><span class="pre">builder.create_zmp_fsbl_project()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.create_zynq_bif"><code class="docutils literal notranslate"><span class="pre">builder.create_zynq_bif()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.create_zynqmp_bif"><code class="docutils literal notranslate"><span class="pre">builder.create_zynqmp_bif()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.def_config_map"><code class="docutils literal notranslate"><span class="pre">builder.def_config_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.hdl_build"><code class="docutils literal notranslate"><span class="pre">builder.hdl_build()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.linux_build"><code class="docutils literal notranslate"><span class="pre">builder.linux_build()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.linux_tools_map"><code class="docutils literal notranslate"><span class="pre">builder.linux_tools_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.shell_out"><code class="docutils literal notranslate"><span class="pre">builder.shell_out()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.shell_out2"><code class="docutils literal notranslate"><span class="pre">builder.shell_out2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.uboot_build"><code class="docutils literal notranslate"><span class="pre">builder.uboot_build()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html#nebula.builder.builder.vivado_override"><code class="docutils literal notranslate"><span class="pre">builder.vivado_override</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.common.html">nebula.common module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.common.html#nebula.common.multi_device_check"><code class="docutils literal notranslate"><span class="pre">multi_device_check()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.common.html#nebula.common.utils"><code class="docutils literal notranslate"><span class="pre">utils</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.common.html#nebula.common.utils.update_defaults_from_yaml"><code class="docutils literal notranslate"><span class="pre">utils.update_defaults_from_yaml()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.coverage.html">nebula.coverage module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.coverage.html#nebula.coverage.coverage"><code class="docutils literal notranslate"><span class="pre">coverage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.coverage.html#nebula.coverage.coverage.collect_gcov_trackers"><code class="docutils literal notranslate"><span class="pre">coverage.collect_gcov_trackers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.coverage.html#nebula.coverage.coverage.gen_lcov_html_report"><code class="docutils literal notranslate"><span class="pre">coverage.gen_lcov_html_report()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.cyberpower.html">nebula.cyberpower module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.cyberpower.html#nebula.cyberpower.CyberPowerPdu"><code class="docutils literal notranslate"><span class="pre">CyberPowerPdu</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.cyberpower.html#nebula.cyberpower.CyberPowerPdu.outlet_state_oids"><code class="docutils literal notranslate"><span class="pre">CyberPowerPdu.outlet_state_oids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.cyberpower.html#nebula.cyberpower.CyberPowerPdu.set_outlet_on"><code class="docutils literal notranslate"><span class="pre">CyberPowerPdu.set_outlet_on()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.cyberpower.html#nebula.cyberpower.CyberPowerPduException"><code class="docutils literal notranslate"><span class="pre">CyberPowerPduException</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.downloader.html">nebula.downloader module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.convert_to_datetime"><code class="docutils literal notranslate"><span class="pre">convert_to_datetime()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.download_artifact"><code class="docutils literal notranslate"><span class="pre">download_artifact()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.download_matlab_generate_bootbin"><code class="docutils literal notranslate"><span class="pre">download_matlab_generate_bootbin()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader"><code class="docutils literal notranslate"><span class="pre">downloader</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.check"><code class="docutils literal notranslate"><span class="pre">downloader.check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.download"><code class="docutils literal notranslate"><span class="pre">downloader.download()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.download_boot_files"><code class="docutils literal notranslate"><span class="pre">downloader.download_boot_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.download_sdcard_release"><code class="docutils literal notranslate"><span class="pre">downloader.download_sdcard_release()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.extract"><code class="docutils literal notranslate"><span class="pre">downloader.extract()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.releases"><code class="docutils literal notranslate"><span class="pre">downloader.releases()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.downloader.retry_session"><code class="docutils literal notranslate"><span class="pre">downloader.retry_session()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.filter_boards"><code class="docutils literal notranslate"><span class="pre">filter_boards()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.gen_url"><code class="docutils literal notranslate"><span class="pre">gen_url()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.generate_bootbin_map_file"><code class="docutils literal notranslate"><span class="pre">generate_bootbin_map_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_artifact_paths"><code class="docutils literal notranslate"><span class="pre">get_artifact_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_firmware_version"><code class="docutils literal notranslate"><span class="pre">get_firmware_version()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_gitsha"><code class="docutils literal notranslate"><span class="pre">get_gitsha()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_info_txt"><code class="docutils literal notranslate"><span class="pre">get_info_txt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_latest_release"><code class="docutils literal notranslate"><span class="pre">get_latest_release()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.get_newest_folder"><code class="docutils literal notranslate"><span class="pre">get_newest_folder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.interpret_bootbin"><code class="docutils literal notranslate"><span class="pre">interpret_bootbin()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.listFD"><code class="docutils literal notranslate"><span class="pre">listFD()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.list_files_in_remote_folder"><code class="docutils literal notranslate"><span class="pre">list_files_in_remote_folder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.sanitize_artifactory_url"><code class="docutils literal notranslate"><span class="pre">sanitize_artifactory_url()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.downloader.html#nebula.downloader.translate_to_reference_design_name"><code class="docutils literal notranslate"><span class="pre">translate_to_reference_design_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.driver.html">nebula.driver module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.driver.html#nebula.driver.driver"><code class="docutils literal notranslate"><span class="pre">driver</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html#nebula.driver.driver.check_iio_context"><code class="docutils literal notranslate"><span class="pre">driver.check_iio_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html#nebula.driver.driver.check_iio_devices"><code class="docutils literal notranslate"><span class="pre">driver.check_iio_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html#nebula.driver.driver.run_all_checks"><code class="docutils literal notranslate"><span class="pre">driver.run_all_checks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.errors.html">nebula.errors module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.LinuxNotFunctionalAfterBootFileUpdate"><code class="docutils literal notranslate"><span class="pre">LinuxNotFunctionalAfterBootFileUpdate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.LinuxNotReached"><code class="docutils literal notranslate"><span class="pre">LinuxNotReached</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.MultiDevFound"><code class="docutils literal notranslate"><span class="pre">MultiDevFound</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.NetworkNotFunctional"><code class="docutils literal notranslate"><span class="pre">NetworkNotFunctional</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.NetworkNotFunctionalAfterBootFileUpdate"><code class="docutils literal notranslate"><span class="pre">NetworkNotFunctionalAfterBootFileUpdate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.PingFailedAfterReboot"><code class="docutils literal notranslate"><span class="pre">PingFailedAfterReboot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.SSHError"><code class="docutils literal notranslate"><span class="pre">SSHError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.SSHNotFunctionalAfterBootFileUpdate"><code class="docutils literal notranslate"><span class="pre">SSHNotFunctionalAfterBootFileUpdate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.errors.html#nebula.errors.UbootNotReached"><code class="docutils literal notranslate"><span class="pre">UbootNotReached</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.helper.html">nebula.helper module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.convert_address_to_tty"><code class="docutils literal notranslate"><span class="pre">convert_address_to_tty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.convert_by_id_to_tty"><code class="docutils literal notranslate"><span class="pre">convert_by_id_to_tty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.get_nics"><code class="docutils literal notranslate"><span class="pre">get_nics()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.get_uarts"><code class="docutils literal notranslate"><span class="pre">get_uarts()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper"><code class="docutils literal notranslate"><span class="pre">helper</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper.create_config_from_netbox"><code class="docutils literal notranslate"><span class="pre">helper.create_config_from_netbox()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper.create_config_interactive"><code class="docutils literal notranslate"><span class="pre">helper.create_config_interactive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper.get_boot_files_from_descriptor"><code class="docutils literal notranslate"><span class="pre">helper.get_boot_files_from_descriptor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper.list_supported_boards"><code class="docutils literal notranslate"><span class="pre">helper.list_supported_boards()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html#nebula.helper.helper.update_yaml"><code class="docutils literal notranslate"><span class="pre">helper.update_yaml()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.helper.html#nebula.helper.project_filter"><code class="docutils literal notranslate"><span class="pre">project_filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.jtag.html">nebula.jtag module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag"><code class="docutils literal notranslate"><span class="pre">jtag</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.boot_to_uboot"><code class="docutils literal notranslate"><span class="pre">jtag.boot_to_uboot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.full_boot"><code class="docutils literal notranslate"><span class="pre">jtag.full_boot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.load_post_uboot_files"><code class="docutils literal notranslate"><span class="pre">jtag.load_post_uboot_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.restart_board"><code class="docutils literal notranslate"><span class="pre">jtag.restart_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.run_xsdb"><code class="docutils literal notranslate"><span class="pre">jtag.run_xsdb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.target_set_str"><code class="docutils literal notranslate"><span class="pre">jtag.target_set_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html#nebula.jtag.jtag.tcl_errors_recover"><code class="docutils literal notranslate"><span class="pre">jtag.tcl_errors_recover()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.main.html">nebula.main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.manager.html">nebula.manager module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager"><code class="docutils literal notranslate"><span class="pre">manager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot_auto"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot_auto()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot_auto_folder"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot_auto_folder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot_jtag_uart"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot_jtag_uart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot_sdmux_pdu"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot_sdmux_pdu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.board_reboot_uart_net_pdu"><code class="docutils literal notranslate"><span class="pre">manager.board_reboot_uart_net_pdu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.copy_reference_from_sdcard"><code class="docutils literal notranslate"><span class="pre">manager.copy_reference_from_sdcard()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.get_status"><code class="docutils literal notranslate"><span class="pre">manager.get_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.load_boot_bin"><code class="docutils literal notranslate"><span class="pre">manager.load_boot_bin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.network_check"><code class="docutils literal notranslate"><span class="pre">manager.network_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.power_cycle_to_boot"><code class="docutils literal notranslate"><span class="pre">manager.power_cycle_to_boot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.recover_board"><code class="docutils literal notranslate"><span class="pre">manager.recover_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.run_test"><code class="docutils literal notranslate"><span class="pre">manager.run_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.shutdown_powerdown_board"><code class="docutils literal notranslate"><span class="pre">manager.shutdown_powerdown_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html#nebula.manager.manager.verify_checksum"><code class="docutils literal notranslate"><span class="pre">manager.verify_checksum()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.netbox.html">nebula.netbox module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice"><code class="docutils literal notranslate"><span class="pre">NetboxDevice</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice.disable"><code class="docutils literal notranslate"><span class="pre">NetboxDevice.disable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice.enable"><code class="docutils literal notranslate"><span class="pre">NetboxDevice.enable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice.status"><code class="docutils literal notranslate"><span class="pre">NetboxDevice.status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice.to_config"><code class="docutils literal notranslate"><span class="pre">NetboxDevice.to_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevice.write_journal"><code class="docutils literal notranslate"><span class="pre">NetboxDevice.write_journal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevices"><code class="docutils literal notranslate"><span class="pre">NetboxDevices</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevices.generate_config"><code class="docutils literal notranslate"><span class="pre">NetboxDevices.generate_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.NetboxDevices.get_devices_names"><code class="docutils literal notranslate"><span class="pre">NetboxDevices.get_devices_names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.ddepth"><code class="docutils literal notranslate"><span class="pre">ddepth()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox"><code class="docutils literal notranslate"><span class="pre">netbox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.add_tag"><code class="docutils literal notranslate"><span class="pre">netbox.add_tag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_chidren_devices"><code class="docutils literal notranslate"><span class="pre">netbox.get_chidren_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_clusters"><code class="docutils literal notranslate"><span class="pre">netbox.get_clusters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_console_ports"><code class="docutils literal notranslate"><span class="pre">netbox.get_console_ports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_device"><code class="docutils literal notranslate"><span class="pre">netbox.get_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_device_bays"><code class="docutils literal notranslate"><span class="pre">netbox.get_device_bays()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_device_roles"><code class="docutils literal notranslate"><span class="pre">netbox.get_device_roles()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_device_types"><code class="docutils literal notranslate"><span class="pre">netbox.get_device_types()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_devices"><code class="docutils literal notranslate"><span class="pre">netbox.get_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_devices_name"><code class="docutils literal notranslate"><span class="pre">netbox.get_devices_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_interfaces"><code class="docutils literal notranslate"><span class="pre">netbox.get_interfaces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_inventory_items"><code class="docutils literal notranslate"><span class="pre">netbox.get_inventory_items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_ip_addresses"><code class="docutils literal notranslate"><span class="pre">netbox.get_ip_addresses()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_mac_from_asset_tag"><code class="docutils literal notranslate"><span class="pre">netbox.get_mac_from_asset_tag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_parent_devices"><code class="docutils literal notranslate"><span class="pre">netbox.get_parent_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_power_outlets"><code class="docutils literal notranslate"><span class="pre">netbox.get_power_outlets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_power_ports"><code class="docutils literal notranslate"><span class="pre">netbox.get_power_ports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_status"><code class="docutils literal notranslate"><span class="pre">netbox.get_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_tag"><code class="docutils literal notranslate"><span class="pre">netbox.get_tag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.get_user_from_token"><code class="docutils literal notranslate"><span class="pre">netbox.get_user_from_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.interface"><code class="docutils literal notranslate"><span class="pre">netbox.interface()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.log_journal"><code class="docutils literal notranslate"><span class="pre">netbox.log_journal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.remove_tag"><code class="docutils literal notranslate"><span class="pre">netbox.remove_tag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.update_device"><code class="docutils literal notranslate"><span class="pre">netbox.update_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.netbox.update_status"><code class="docutils literal notranslate"><span class="pre">netbox.update_status()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.obj_dic"><code class="docutils literal notranslate"><span class="pre">obj_dic()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netbox.html#nebula.netbox.todict"><code class="docutils literal notranslate"><span class="pre">todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.netconsole.html">nebula.netconsole module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.netconsole.html#nebula.netconsole.netconsole"><code class="docutils literal notranslate"><span class="pre">netconsole</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html#nebula.netconsole.netconsole.listen"><code class="docutils literal notranslate"><span class="pre">netconsole.listen()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html#nebula.netconsole.netconsole.start_log"><code class="docutils literal notranslate"><span class="pre">netconsole.start_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html#nebula.netconsole.netconsole.stop_log"><code class="docutils literal notranslate"><span class="pre">netconsole.stop_log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.network.html">nebula.network module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.network.html#nebula.network.network"><code class="docutils literal notranslate"><span class="pre">network</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.check_board_booted"><code class="docutils literal notranslate"><span class="pre">network.check_board_booted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.check_dmesg"><code class="docutils literal notranslate"><span class="pre">network.check_dmesg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.check_ssh"><code class="docutils literal notranslate"><span class="pre">network.check_ssh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.copy_file_to_remote"><code class="docutils literal notranslate"><span class="pre">network.copy_file_to_remote()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.ping_board"><code class="docutils literal notranslate"><span class="pre">network.ping_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.reboot_board"><code class="docutils literal notranslate"><span class="pre">network.reboot_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.run_diagnostics"><code class="docutils literal notranslate"><span class="pre">network.run_diagnostics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.run_ssh_command"><code class="docutils literal notranslate"><span class="pre">network.run_ssh_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.update_boot_partition"><code class="docutils literal notranslate"><span class="pre">network.update_boot_partition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.update_boot_partition_existing_files"><code class="docutils literal notranslate"><span class="pre">network.update_boot_partition_existing_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html#nebula.network.network.verify_checksum"><code class="docutils literal notranslate"><span class="pre">network.verify_checksum()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.pdu.html">nebula.pdu module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.pdu.html#nebula.pdu.pdu"><code class="docutils literal notranslate"><span class="pre">pdu</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html#nebula.pdu.pdu.power_cycle_board"><code class="docutils literal notranslate"><span class="pre">pdu.power_cycle_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html#nebula.pdu.pdu.power_down_board"><code class="docutils literal notranslate"><span class="pre">pdu.power_down_board()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html#nebula.pdu.pdu.power_up_board"><code class="docutils literal notranslate"><span class="pre">pdu.power_up_board()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.tasks.html">nebula.tasks module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.tasks.html#nebula.tasks.MyFilter"><code class="docutils literal notranslate"><span class="pre">MyFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tasks.html#nebula.tasks.MyFilter.filter"><code class="docutils literal notranslate"><span class="pre">MyFilter.filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.tasks.html#nebula.tasks.load_yaml"><code class="docutils literal notranslate"><span class="pre">load_yaml()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.tftpboot.html">nebula.tftpboot module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.tftpboot.html#nebula.tftpboot.tftpboot"><code class="docutils literal notranslate"><span class="pre">tftpboot</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html#nebula.tftpboot.tftpboot.check_service"><code class="docutils literal notranslate"><span class="pre">tftpboot.check_service()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html#nebula.tftpboot.tftpboot.start_service"><code class="docutils literal notranslate"><span class="pre">tftpboot.start_service()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html#nebula.tftpboot.tftpboot.update_boot_files"><code class="docutils literal notranslate"><span class="pre">tftpboot.update_boot_files()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.uart.html">nebula.uart module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.uart.html#nebula.uart.escape_ansi"><code class="docutils literal notranslate"><span class="pre">escape_ansi()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart"><code class="docutils literal notranslate"><span class="pre">uart</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.boot"><code class="docutils literal notranslate"><span class="pre">uart.boot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.copy_reference"><code class="docutils literal notranslate"><span class="pre">uart.copy_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.get_ip_address"><code class="docutils literal notranslate"><span class="pre">uart.get_ip_address()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.get_local_mac_usbdev"><code class="docutils literal notranslate"><span class="pre">uart.get_local_mac_usbdev()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.get_uart_boot_message"><code class="docutils literal notranslate"><span class="pre">uart.get_uart_boot_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.get_uart_command_for_linux"><code class="docutils literal notranslate"><span class="pre">uart.get_uart_command_for_linux()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.is_open"><code class="docutils literal notranslate"><span class="pre">uart.is_open()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.load_system_uart"><code class="docutils literal notranslate"><span class="pre">uart.load_system_uart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.load_system_uart_copy_to_sdcard"><code class="docutils literal notranslate"><span class="pre">uart.load_system_uart_copy_to_sdcard()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.load_system_uart_from_tftp"><code class="docutils literal notranslate"><span class="pre">uart.load_system_uart_from_tftp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.pipe_to_log_file"><code class="docutils literal notranslate"><span class="pre">uart.pipe_to_log_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.reinitialize_uart"><code class="docutils literal notranslate"><span class="pre">uart.reinitialize_uart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.request_ip_dhcp"><code class="docutils literal notranslate"><span class="pre">uart.request_ip_dhcp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.set_ip_static"><code class="docutils literal notranslate"><span class="pre">uart.set_ip_static()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.start_log"><code class="docutils literal notranslate"><span class="pre">uart.start_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.stop_log"><code class="docutils literal notranslate"><span class="pre">uart.stop_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.update_boot_args"><code class="docutils literal notranslate"><span class="pre">uart.update_boot_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.update_boot_files_from_running"><code class="docutils literal notranslate"><span class="pre">uart.update_boot_files_from_running()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.update_dev_tree"><code class="docutils literal notranslate"><span class="pre">uart.update_dev_tree()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.update_fpga"><code class="docutils literal notranslate"><span class="pre">uart.update_fpga()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html#nebula.uart.uart.update_kernel"><code class="docutils literal notranslate"><span class="pre">uart.update_kernel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.usbdev.html">nebula.usbdev module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.usbdev.html#nebula.usbdev.usbdev"><code class="docutils literal notranslate"><span class="pre">usbdev</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html#nebula.usbdev.usbdev.shell_out2"><code class="docutils literal notranslate"><span class="pre">usbdev.shell_out2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html#nebula.usbdev.usbdev.update_firmware"><code class="docutils literal notranslate"><span class="pre">usbdev.update_firmware()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html#nebula.usbdev.usbdev.wait_for_usb_mount"><code class="docutils literal notranslate"><span class="pre">usbdev.wait_for_usb_mount()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nebula.usbmux.html">usbmux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux"><code class="docutils literal notranslate"><span class="pre">usbmux</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.backup_files_to_external"><code class="docutils literal notranslate"><span class="pre">usbmux.backup_files_to_external()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.find_mux_device"><code class="docutils literal notranslate"><span class="pre">usbmux.find_mux_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.find_muxed_sdcard"><code class="docutils literal notranslate"><span class="pre">usbmux.find_muxed_sdcard()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.get_mux_mode"><code class="docutils literal notranslate"><span class="pre">usbmux.get_mux_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.search_path"><code class="docutils literal notranslate"><span class="pre">usbmux.search_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.set_mux_mode"><code class="docutils literal notranslate"><span class="pre">usbmux.set_mux_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.target_mux"><code class="docutils literal notranslate"><span class="pre">usbmux.target_mux</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.update_boot_files_from_external"><code class="docutils literal notranslate"><span class="pre">usbmux.update_boot_files_from_external()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.update_boot_files_from_sdcard_itself"><code class="docutils literal notranslate"><span class="pre">usbmux.update_boot_files_from_sdcard_itself()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.update_devicetree_for_mux"><code class="docutils literal notranslate"><span class="pre">usbmux.update_devicetree_for_mux()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.update_rootfs_files_from_external"><code class="docutils literal notranslate"><span class="pre">usbmux.update_rootfs_files_from_external()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html#nebula.usbmux.usbmux.write_img_file_to_sdcard"><code class="docutils literal notranslate"><span class="pre">usbmux.write_img_file_to_sdcard()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-nebula">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nebula" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples/kernel_coverage.html" class="btn btn-neutral float-left" title="Kernel Coverage Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nebula.builder.html" class="btn btn-neutral float-right" title="nebula.builder module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Travis F. Collins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

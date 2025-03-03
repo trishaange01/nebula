@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nebula.netbox module &mdash; nebula v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=0ec76b63"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nebula.netconsole module" href="nebula.netconsole.html" />
+    <link rel="prev" title="nebula.manager module" href="nebula.manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            nebula
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../flow.html">Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Command-Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest.html">pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yml.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hw_devs.html">Hardware Specific Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/index.html">Built-In Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nebula.html">nebula package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nebula.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html">nebula.builder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.common.html">nebula.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.coverage.html">nebula.coverage module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.cyberpower.html">nebula.cyberpower module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html">nebula.downloader module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html">nebula.driver module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.errors.html">nebula.errors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html">nebula.helper module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html">nebula.jtag module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.main.html">nebula.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html">nebula.manager module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nebula.netbox module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.NetboxDevice"><code class="docutils literal notranslate"><span class="pre">NetboxDevice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.NetboxDevices"><code class="docutils literal notranslate"><span class="pre">NetboxDevices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.ddepth"><code class="docutils literal notranslate"><span class="pre">ddepth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.netbox"><code class="docutils literal notranslate"><span class="pre">netbox</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.obj_dic"><code class="docutils literal notranslate"><span class="pre">obj_dic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.netbox.todict"><code class="docutils literal notranslate"><span class="pre">todict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html">nebula.netconsole module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html">nebula.network module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html">nebula.pdu module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tasks.html">nebula.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html">nebula.tftpboot module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.uart.html">nebula.uart module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html">nebula.usbdev module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html">usbmux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.html#module-nebula">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nebula</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="nebula.html">nebula package</a></li>
+      <li class="breadcrumb-item active">nebula.netbox module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/core/nebula.netbox.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-nebula.netbox">
+<span id="nebula-netbox-module"></span><h1>nebula.netbox module<a class="headerlink" href="#module-nebula.netbox" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">NetboxDevice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netbox_interface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Netbox Device Model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nebula:</span> <span class="pre">Disable</span> <span class="pre">device'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice.disable" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nebula:</span> <span class="pre">Enable</span> <span class="pre">device'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice.enable" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice.status" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice.to_config">
+<span class="sig-name descname"><span class="pre">to_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice.to_config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevice.write_journal">
+<span class="sig-name descname"><span class="pre">write_journal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'info'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Automated</span> <span class="pre">journal</span> <span class="pre">entry'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevice.write_journal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">NetboxDevices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'active'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fpga-dut'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevices" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>List of NetboxDevice</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevices.generate_config">
+<span class="sig-name descname"><span class="pre">generate_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevices.generate_config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.NetboxDevices.get_devices_names">
+<span class="sig-name descname"><span class="pre">get_devices_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.NetboxDevices.get_devices_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nebula.netbox.ddepth">
+<span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">ddepth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.ddepth" title="Permalink to this definition"></a></dt>
+<dd><p>Return depth of a dictionary</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nebula.netbox.netbox">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">netbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0123456789abcdef0123456789abcdef01234567'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yamlfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="nebula.common.html#nebula.common.utils" title="nebula.common.utils"><code class="xref py py-class docutils literal notranslate"><span class="pre">utils</span></code></a></p>
+<p>NetBox interface</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.add_tag">
+<span class="sig-name descname"><span class="pre">add_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.add_tag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_chidren_devices">
+<span class="sig-name descname"><span class="pre">get_chidren_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_chidren_devices" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_clusters">
+<span class="sig-name descname"><span class="pre">get_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_clusters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_console_ports">
+<span class="sig-name descname"><span class="pre">get_console_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_console_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_device">
+<span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_device" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_device_bays">
+<span class="sig-name descname"><span class="pre">get_device_bays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_device_bays" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_device_roles">
+<span class="sig-name descname"><span class="pre">get_device_roles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_device_roles" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_device_types">
+<span class="sig-name descname"><span class="pre">get_device_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_device_types" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_devices">
+<span class="sig-name descname"><span class="pre">get_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_devices" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_devices_name">
+<span class="sig-name descname"><span class="pre">get_devices_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_devices_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_interfaces">
+<span class="sig-name descname"><span class="pre">get_interfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_interfaces" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_inventory_items">
+<span class="sig-name descname"><span class="pre">get_inventory_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_inventory_items" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_ip_addresses">
+<span class="sig-name descname"><span class="pre">get_ip_addresses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_ip_addresses" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_mac_from_asset_tag">
+<span class="sig-name descname"><span class="pre">get_mac_from_asset_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_mac_from_asset_tag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_parent_devices">
+<span class="sig-name descname"><span class="pre">get_parent_devices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_parent_devices" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_power_outlets">
+<span class="sig-name descname"><span class="pre">get_power_outlets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_power_outlets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_power_ports">
+<span class="sig-name descname"><span class="pre">get_power_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_power_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_status" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_tag">
+<span class="sig-name descname"><span class="pre">get_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_tag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.get_user_from_token">
+<span class="sig-name descname"><span class="pre">get_user_from_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.get_user_from_token" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.interface">
+<span class="sig-name descname"><span class="pre">interface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.interface" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.log_journal">
+<span class="sig-name descname"><span class="pre">log_journal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">author_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'info'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Automated</span> <span class="pre">journal</span> <span class="pre">entry'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.log_journal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.remove_tag">
+<span class="sig-name descname"><span class="pre">remove_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.remove_tag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.update_device">
+<span class="sig-name descname"><span class="pre">update_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.update_device" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.netbox.netbox.update_status">
+<span class="sig-name descname"><span class="pre">update_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.netbox.update_status" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nebula.netbox.obj_dic">
+<span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">obj_dic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.obj_dic" title="Permalink to this definition"></a></dt>
+<dd><p>Convert dictionary to object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="nebula.netbox.todict">
+<span class="sig-prename descclassname"><span class="pre">nebula.netbox.</span></span><span class="sig-name descname"><span class="pre">todict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.netbox.todict" title="Permalink to this definition"></a></dt>
+<dd><p>Convert object to dictionary</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nebula.manager.html" class="btn btn-neutral float-left" title="nebula.manager module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nebula.netconsole.html" class="btn btn-neutral float-right" title="nebula.netconsole module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Travis F. Collins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

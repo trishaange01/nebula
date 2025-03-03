@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nebula.uart module &mdash; nebula v1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=0ec76b63"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nebula.usbdev module" href="nebula.usbdev.html" />
+    <link rel="prev" title="nebula.tftpboot module" href="nebula.tftpboot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            nebula
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../flow.html">Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli.html">Command-Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest.html">pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yml.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hw_devs.html">Hardware Specific Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/index.html">Built-In Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nebula.html">nebula package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="nebula.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nebula.builder.html">nebula.builder module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.common.html">nebula.common module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.coverage.html">nebula.coverage module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.cyberpower.html">nebula.cyberpower module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.downloader.html">nebula.downloader module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.driver.html">nebula.driver module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.errors.html">nebula.errors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.helper.html">nebula.helper module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.jtag.html">nebula.jtag module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.main.html">nebula.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.manager.html">nebula.manager module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netbox.html">nebula.netbox module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.netconsole.html">nebula.netconsole module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.network.html">nebula.network module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.pdu.html">nebula.pdu module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tasks.html">nebula.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.tftpboot.html">nebula.tftpboot module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nebula.uart module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.uart.escape_ansi"><code class="docutils literal notranslate"><span class="pre">escape_ansi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nebula.uart.uart"><code class="docutils literal notranslate"><span class="pre">uart</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbdev.html">nebula.usbdev module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nebula.usbmux.html">usbmux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nebula.html#module-nebula">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nebula</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="nebula.html">nebula package</a></li>
+      <li class="breadcrumb-item active">nebula.uart module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/core/nebula.uart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-nebula.uart">
+<span id="nebula-uart-module"></span><h1>nebula.uart module<a class="headerlink" href="#module-nebula.uart" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="nebula.uart.escape_ansi">
+<span class="sig-prename descclassname"><span class="pre">nebula.uart.</span></span><span class="sig-name descname"><span class="pre">escape_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.escape_ansi" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nebula.uart.uart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nebula.uart.</span></span><span class="sig-name descname"><span class="pre">uart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tftpserverip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fmcomms2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baudrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">115200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uart.log'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'console=ttyPS0,115200</span> <span class="pre">root=/dev/mmcblk0p2</span> <span class="pre">rw</span> <span class="pre">earlycon</span> <span class="pre">earlyprintk</span> <span class="pre">rootfstype=ext4</span> <span class="pre">rootwait'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dhcp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yamlfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="nebula.common.html#nebula.common.utils" title="nebula.common.utils"><code class="xref py py-class docutils literal notranslate"><span class="pre">utils</span></code></a></p>
+<dl class="simple">
+<dt>UART Interface Handler</dt><dd><p>This class enables monitoring and sending commands
+over a UART interface. Monitoring is done using
+threads so monitor will not block.</p>
+</dd>
+</dl>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>address</dt><dd><p>File descriptor of serial/COM interface</p>
+</dd>
+<dt>tftpserverip</dt><dd><p>IP address of TFTP server</p>
+</dd>
+<dt>logfilename</dt><dd><p>Filename to save output log of console</p>
+</dd>
+<dt>bootargs</dt><dd><p>Kernel bootargs</p>
+</dd>
+<dt>baudrate</dt><dd><p>Baudrate of UART interface in bits per second (default is 115200)</p>
+</dd>
+<dt>print_to_console</dt><dd><p>Print output of UART console. Output will appear in log file as well</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.boot">
+<span class="sig-name descname"><span class="pre">boot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.boot" title="Permalink to this definition"></a></dt>
+<dd><p>Boot kernel from uboot menu</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.copy_reference">
+<span class="sig-name descname"><span class="pre">copy_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BOOT.BIN.ORG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BOOT.BIN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">done_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.copy_reference" title="Permalink to this definition"></a></dt>
+<dd><p>Using reference files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.get_ip_address">
+<span class="sig-name descname"><span class="pre">get_ip_address</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.get_ip_address" title="Permalink to this definition"></a></dt>
+<dd><p>Read IP address of DUT using ip command from UART</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.get_local_mac_usbdev">
+<span class="sig-name descname"><span class="pre">get_local_mac_usbdev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.get_local_mac_usbdev" title="Permalink to this definition"></a></dt>
+<dd><p>Read MAC Address of enumerated NIC on host from DUT (Pluto/M2K only)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.get_uart_boot_message">
+<span class="sig-name descname"><span class="pre">get_uart_boot_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.get_uart_boot_message" title="Permalink to this definition"></a></dt>
+<dd><p>Read UART boot message on no-OS builds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.get_uart_command_for_linux">
+<span class="sig-name descname"><span class="pre">get_uart_command_for_linux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">findstring</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.get_uart_command_for_linux" title="Permalink to this definition"></a></dt>
+<dd><p>Write command to UART and wait for a specific string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.is_open">
+<span class="sig-name descname"><span class="pre">is_open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.is_open" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.load_system_uart">
+<span class="sig-name descname"><span class="pre">load_system_uart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system_top_bit_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devtree_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.load_system_uart" title="Permalink to this definition"></a></dt>
+<dd><p>Load complete system (bitstream, devtree, kernel) during uboot from UART (XMODEM)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.load_system_uart_copy_to_sdcard">
+<span class="sig-name descname"><span class="pre">load_system_uart_copy_to_sdcard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootbin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devtree_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.load_system_uart_copy_to_sdcard" title="Permalink to this definition"></a></dt>
+<dd><p>Load complete system (BOOT.BIN, devtree, kernel) during uboot from UART (XMODEM)
+and to SD card</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.load_system_uart_from_tftp">
+<span class="sig-name descname"><span class="pre">load_system_uart_from_tftp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.load_system_uart_from_tftp" title="Permalink to this definition"></a></dt>
+<dd><p>Load complete system (bitstream, devtree, kernel) during uboot from TFTP</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.pipe_to_log_file">
+<span class="sig-name descname"><span class="pre">pipe_to_log_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logappend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.pipe_to_log_file" title="Permalink to this definition"></a></dt>
+<dd><p>Write data to log file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.reinitialize_uart">
+<span class="sig-name descname"><span class="pre">reinitialize_uart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.reinitialize_uart" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.request_ip_dhcp">
+<span class="sig-name descname"><span class="pre">request_ip_dhcp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eth0'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.request_ip_dhcp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.set_ip_static">
+<span class="sig-name descname"><span class="pre">set_ip_static</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eth0'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.set_ip_static" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.start_log">
+<span class="sig-name descname"><span class="pre">start_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logappend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.start_log" title="Permalink to this definition"></a></dt>
+<dd><p>Trigger monitoring with UART interface</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.stop_log">
+<span class="sig-name descname"><span class="pre">stop_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.stop_log" title="Permalink to this definition"></a></dt>
+<dd><p>Stop monitoring with UART interface</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.update_boot_args">
+<span class="sig-name descname"><span class="pre">update_boot_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.update_boot_args" title="Permalink to this definition"></a></dt>
+<dd><p>Update kernel boot arguments during uboot</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.update_boot_files_from_running">
+<span class="sig-name descname"><span class="pre">update_boot_files_from_running</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system_top_bit_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">devtree_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.update_boot_files_from_running" title="Permalink to this definition"></a></dt>
+<dd><p>Load complete system (bitstream, devtree, kernel) during uboot from UART (XMODEM) from a running system</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.update_dev_tree">
+<span class="sig-name descname"><span class="pre">update_dev_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.update_dev_tree" title="Permalink to this definition"></a></dt>
+<dd><p>Transfter devicetree over TFTP to system during uboot</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.update_fpga">
+<span class="sig-name descname"><span class="pre">update_fpga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_tftpload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.update_fpga" title="Permalink to this definition"></a></dt>
+<dd><p>Transfter and load system_top.bit over TFTP to system during uboot</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nebula.uart.uart.update_kernel">
+<span class="sig-name descname"><span class="pre">update_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nebula.uart.uart.update_kernel" title="Permalink to this definition"></a></dt>
+<dd><p>Transfter kernel image over TFTP to system during uboot</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nebula.tftpboot.html" class="btn btn-neutral float-left" title="nebula.tftpboot module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nebula.usbdev.html" class="btn btn-neutral float-right" title="nebula.usbdev module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Travis F. Collins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
