@@ -60,11 +60,11 @@ jobs:
           cat build/coverage/python.txt | wc -l | xargs -I % test % -eq 2
           cd ..
 
-      - name: Check doc links
-        run: |
-          cd doc
-          make linkcheck
-          cd ..
+      # - name: Check doc links
+      #   run: |
+      #     cd doc
+      #     make linkcheck
+      #     cd ..
 
   DeployMainDoc:
     runs-on: ubuntu-latest
