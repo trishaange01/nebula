@@ -40,6 +40,10 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx_rtd_theme",
     "sphinx.ext.graphviz",
+    "myst_parser",
+    "sphinxcontrib.mermaid",
+    "sphinx_remove_toctrees",
+    "sphinx_click",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
