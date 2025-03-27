@@ -20,7 +20,7 @@ jobs:
         run: |
           pip install -r requirements_dev.txt
           pip install -r requirements_doc.txt
-     #     pip install ".[cli,web]"
+          pip install ".[cli,web]"
 
       - name: Build doc
         run: |
@@ -44,7 +44,7 @@ jobs:
         run: |
           pip install -r requirements_dev.txt
           pip install -r requirements_doc.txt
-     #     pip install ".[cli,web]"
+          pip install ".[cli,web]"
 
       - name: Check doc build
         run: |
@@ -85,7 +85,7 @@ jobs:
         run: |
           pip install -r requirements_dev.txt
           pip install -r requirements_doc.txt
-    #      pip install ".[cli,web]"
+          pip install ".[cli,web]"
 
       - name: Build doc and release
         run: |
@@ -118,7 +118,7 @@ jobs:
         run: |
           pip install -r requirements_dev.txt
           pip install -r requirements_doc.txt
-      #    pip install ".[cli,web]"
+          pip install ".[cli,web]"
 
       - name: Build doc and release
         run: |
@@ -160,7 +160,7 @@ jobs:
           pip install -r requirements_dev.txt
           pip install -r requirements_doc.txt
           pip install setuptools wheel twine build
-      #    pip install ".[cli,web]"
+          pip install ".[cli,web]"
 
       - name: Build doc and release
         run: |
